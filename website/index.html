@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCA on my 2024 art</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            text-align: left;
+            padding: 10px;
+            font-weight: 400;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #header-container {
+            max-width: 50%; /* Restrict to half the screen width */
+            margin-left: 3%;
+            margin-right: auto;
+        }
+
+        main {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #plot-container {
+            flex: 2;
+            min-width: 400px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #image-container {
+            flex: 1;
+            min-width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: #333; /* Uniform background matching body */
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #image-overlay {
+            width: 90%;
+            height: 90%;
+            background-color: #333; /* Match body background */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: none;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+
+        #legend {
+            position: absolute;
+            bottom: 13%;
+            left: 7%;
+            width: 15%; /* Scales with screen size */
+            height: 10px;
+            background: linear-gradient(to right, blue, #6aff00);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #legend-title {
+            position: absolute;
+            bottom: 16%;
+            left: 7%;
+            font-size: 12px; /* Smaller font size */
+            color: white;
+        }
+
+        #legend-labels {
+            position: absolute;
+            bottom: 10%;
+            left: 7%;
+            display: flex;
+            justify-content: space-between;
+            width: 15%; /* Matches legend width */
+            font-size: 10px;
+            color: white;
+        }
+
+        #legend-labels span {
+            text-align: center;
+        }
+
+        @media (max-width: 800px) {
+            main {
+                flex-direction: column;
+            }
+
+            #plot-container, #image-container {
+                min-width: 100%;
+            }
+
+            #image-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #header-container {
+                max-width: 100%; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header-container">
+            <h1>Interactive PCA for 2024 Artworks</h1>
+            <p>Explore my 2024 sketches and drawings interactively. The PCA visualization categorizes artworks by style and medium, revealing insights through satisfaction ratings. Hover to view individual pieces.</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="plot-container">
+            <canvas id="pcaCanvas"></canvas>
+            <div id="legend-title">Satisfaction Level</div>
+            <div id="legend"></div>
+            <div id="legend-labels">
+                <span>Low</span>
+                <span>High</span>
+            </div>
+        </div>
+
+        <div id="image-container">
+            <div id="image-overlay"></div>
+        </div>
+    </main>
+
+    <script>
+        // Load PCA data from an external JSON file
+        fetch('data/pca_data.json')
+            .then(response => response.json())
+            .then(pcaData => {
+                const canvas = document.getElementById('pcaCanvas');
+                const ctx = canvas.getContext('2d');
+                const imageOverlay = document.getElementById('image-overlay');
+
+                const canvasWidth = canvas.width = canvas.parentElement.offsetWidth;
+                const canvasHeight = canvas.height = canvas.parentElement.offsetHeight;
+                const margin = 80; // Increased margin to bring axis descriptions inside
+
+                // Scaling function to map PCA points to canvas size with margin
+                function scale(value, min, max, canvasSize) {
+                    return margin + ((value - min) / (max - min)) * (canvasSize - 2 * margin);
+                }
+
+                // Find PCA data range for scaling
+                const xValues = pcaData.map(point => point.x);
+                const yValues = pcaData.map(point => point.y);
+
+                const xMin = Math.min(...xValues);
+                const xMax = Math.max(...xValues);
+                const yMin = Math.min(...yValues);
+                const yMax = Math.max(...yValues);
+
+                // Function to map satisfaction to color (blue for low, green for high)
+                function satisfactionToColor(satisfaction) {
+                    const normValue = satisfaction / Math.max(...pcaData.map(p => p.satisfaction));
+                    const blue = Math.round(255 * (1 - normValue));
+                    const green = Math.round(255 * normValue);
+                    return `rgb(0, ${green}, ${blue})`;
+                }
+
+                // Draw axes at the actual PCA origin
+                const xOrigin = scale(0, xMin, xMax, canvasWidth);
+                const yOrigin = scale(0, yMin, yMax, canvasHeight);
+
+                ctx.strokeStyle = "#ccc";
+                ctx.lineWidth = 1;
+
+                // X-axis
+                ctx.beginPath();
+                ctx.moveTo(margin, yOrigin);
+                ctx.lineTo(canvasWidth - margin, yOrigin);
+                ctx.stroke();
+
+                // Y-axis
+                ctx.beginPath();
+                ctx.moveTo(xOrigin, margin);
+                ctx.lineTo(xOrigin, canvasHeight - margin);
+                ctx.stroke();
+
+                // Add corner labels for PCA meanings
+                ctx.font = "18px 'Inter', sans-serif";
+                ctx.fillStyle = "white";
+
+                // Flip axis orientation for better labeling
+                ctx.textAlign = "center";
+                ctx.fillText("Traditional", xOrigin, margin - 10);
+                ctx.fillText("Experimental", xOrigin, canvasHeight - margin + 20);
+                ctx.textAlign = "left";
+                ctx.fillText("Drawing", canvasWidth - margin - 70, yOrigin - 5);
+                ctx.textAlign = "right";
+                ctx.fillText("Painting", margin + 80, yOrigin - 10);
+
+                // Draw PCA points on the canvas
+                pcaData.forEach(point => {
+                    const x = scale(point.x, xMin, xMax, canvasWidth);
+                    const y = scale(point.y, yMin, yMax, canvasHeight);
+
+                    ctx.beginPath();
+                    ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                    ctx.fillStyle = satisfactionToColor(point.satisfaction);
+                    ctx.fill();
+                });
+
+                // Add hover interaction for background image change
+                canvas.addEventListener('mousemove', event => {
+                    const rect = canvas.getBoundingClientRect();
+                    const mouseX = event.clientX - rect.left;
+                    const mouseY = event.clientY - rect.top;
+
+                    let found = false;
+
+                    pcaData.forEach(point => {
+                        const x = scale(point.x, xMin, xMax, canvasWidth);
+                        const y = scale(point.y, yMin, yMax, canvasHeight);
+
+                        const distance = Math.sqrt(
+                            (mouseX - x) ** 2 + (mouseY - y) ** 2
+                        );
+
+                        if (distance < 5 && point.satisfaction >= 4) {
+                            imageOverlay.style.backgroundImage = `url('${point.image}')`;
+                            imageOverlay.style.opacity = 1;
+                            found = true;
+                        }
+                    });
+
+                    if (!found) {
+                        imageOverlay.style.opacity = 0;
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
