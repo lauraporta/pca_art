@@ -20,10 +20,10 @@ pip install .
 ```
 
 ### 1. Add Your Artworks
-Place your images in the folder `website/photos/`. Ensure the filenames follow the format `IMG_XXXX.png`, where `XXXX` matches the `id` column in your dataset.
+Place your images in the folder `docs/photos/`. Ensure the filenames follow the format `IMG_XXXX.png`, where `XXXX` matches the `id` column in your dataset.
 
 ### 2. Create Your Dataset
-Replace the `website/data/dataset.csv` file with your own dataset, containing details for each piece. The dataset should include the following columns:
+Replace the `docs/data/dataset.csv` file with your own dataset, containing details for each piece. The dataset should include the following columns:
 
 | Column            | Description                                                                 |
 |-------------------|-----------------------------------------------------------------------------|
@@ -63,7 +63,7 @@ In my dataset, the PCA revealed two primary axes that I interpreted as:
 Depending on your work, the main principal components (PCs) may change and require different interpretations. Explore the generated plot to uncover patterns specific to your dataset.
 
 ### 4. Visualize the Plot
-Open `website/index.html` using a Python server (e.g., `python -m http.server`) or a VSCode Live Server extension. This will display an interactive PCA visualization of your artworks.
+Open `docs/index.html` using a Python server (e.g., `python -m http.server`) or a VSCode Live Server extension. This will display an interactive PCA visualization of your artworks.
 
 If the PCA identifies different axes for your dataset, feel free to modify the axis labels in the HTML file to better reflect your findings.
 

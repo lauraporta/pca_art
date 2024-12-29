@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.feature_extraction.text import CountVectorizer
 
 # Load your dataset
-data = pd.read_csv('website/data/dataset.csv')
+data = pd.read_csv('docs/data/dataset.csv')
 
 # Process "palette" and "materials" columns
 def process_list_column(column):
@@ -55,6 +55,6 @@ pca_data = pd.DataFrame({
 })
 
 # Save the PCA data to a JSON file
-pca_data.to_json('website/data/pca_data.json', orient='records')
+pca_data.to_json('docs/data/pca_data.json', orient='records')
 
 print("PCA data has been saved to 'pca_data.json'.")
