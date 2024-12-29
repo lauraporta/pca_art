@@ -4,7 +4,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.feature_extraction.text import CountVectorizer
 
 # Load your dataset
-# Replace 'your_dataset.csv' with your actual dataset file
 data = pd.read_csv('website/data/dataset.csv')
 
 # Process "palette" and "materials" columns
@@ -18,13 +17,15 @@ materials_features, materials_names = process_list_column(data['materials'])
 palette_df = pd.DataFrame(palette_features, columns=[f"palette_{name}" for name in palette_names])
 materials_df = pd.DataFrame(materials_features, columns=[f"materials_{name}" for name in materials_names])
 
-# Process "subject", "reference", and "size"
+# Process "subject" and "reference"
 subject_features, subject_names = process_list_column(data['subject'])
 reference_features, reference_names = process_list_column(data['reference'])
-size_dummies = pd.get_dummies(data['size'], prefix="size")
 
 subject_df = pd.DataFrame(subject_features, columns=[f"subject_{name}" for name in subject_names])
 reference_df = pd.DataFrame(reference_features, columns=[f"reference_{name}" for name in reference_names])
+
+# Process "size"
+size_dummies = pd.get_dummies(data['size'], prefix="size")
 
 # Combine all enhanced features
 enhanced_data = pd.concat([
