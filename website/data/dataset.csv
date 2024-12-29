@@ -1,0 +1,80 @@
+id,realistic,subject_general,reference,palette,materials,size,exercise,subject,satisfacion
+332,1,still life,live painting,grayscale,"acrylic, paper",small,1,"pot, box",4
+397,1,portrait,live painting,"brown, blue","acrylic, canvas board",medium,1,man,3
+399,1,landscape,photo,"black, white red","acrylic, paper",small,0,buildings,2
+412,1,portrait,mirror,"green, peach","acrylic, canvas board",medium,1,me,1
+423,1,still life,live painting,grayscale,"pencil, paper",small,1,plant,3
+442,1,anatomical ,photo,grayscale,"pencil, paper",small,1,hand,4
+443,1,portrait,photo,grayscale,"pencil, paper",small,1,woman,3
+1121,0.5,portrait,photo,"yellow, purple","acrylic, canvas board",medium,0,woman,4
+1126,0.5,portrait,photo,"red, blue","acrylic, canvas board",medium,0,woman,3
+1128,0.5,portrait,photo,"red, green","acrylic, canvas board",small,0,woman,4
+1132,0.5,narrative composition,collage of photos,"red, brown, green, yello, purple, blue","acrylic, canvas board",big,0,"women, animal, buildings",5
+1134,0.5,portrait,"photo, live painting","red, white, purple","acrylic, canvas board",medium,0,"woman, flower",5
+1135,0.5,still life,photo,"pink, blue","acrylic, canvas board",medium,1,leaf,2
+1136,1,portrait,photo,grayscale,"pencil, paper",small,1,"woman, sea",4
+1148,0.5,portrait,memory,"red, black, yellow","chalk, paper",small,0,woman,3
+1164,0.5,still life,live painting,"red, blue, white, yellow, green","acrylic, canvas board",small,1,"bottles, lemon, flowers",3
+1165,0.5,still life,live painting,"red, gray","acrylic, paper",big,1,skulls,3
+1302,0.5,still life,photo,"pink, black","acrylic, paper",big,1,flowers,3
+1304,0.5,still life,photo,"yellow, black","acrylic, paper",big,1,flowers,2
+1306,0.5,portrait,photo,"yellow, black, red, blue","acrylic, paper",big,1,man,3
+1313,0.5,portrait,photo,"blue, pink, yellow","acrylic, paper",small,1,woman,2
+1314,1,landscape,photo,"green, black","acrylic, canvas board",small,0,countryside,3
+1340,0.5,portrait,live painting,grayscale,"acrylic, paper",big,1,woman,2
+1341,1,portrait,live painting,grayscale,"charcoal, pencil, paper",big,1,woman,1
+1342,0.5,portrait,live painting,"pink, green","acrylic, paper",big,1,woman,1
+1941,1,narrative composition,painting,"yellow, pink","chalk, paper",small,1,people,2
+1943,1,portrait,painting,grayscale,"pencil, paper",small,1,man,3
+2016,0.5,still life,live painting,grayscale,"charcoal, paper",big,1,vase,3
+2019,0.5,still life,live painting,grayscale,"charcoal, paper",big,1,vase,2
+2023,0.5,still life,live painting,grayscale,"charcoal, paper",big,1,vase,2
+2026,0.5,landscape,live painting,grayscale,"charcoal, paper",big,1,stools,3
+2130,0,landscape,immagination,red,"acrylic, canvas board",medium,0,none,5
+2194,0,landscape,memory,"blue, yellow, brown","acrylic, canvas",small,0,buildings,3
+2218,0.5,portrait,live painting,"blue, pink","acrylic, paper",small,1,woman,3
+2223,0,?,immagination,"green, red","acrylic, mediums, paper",big,1,?,1
+2224,0,?,immagination,"pink, black","acrylic, mediums, paper",big,1,?,2
+2226,0,?,immagination,"blue, green, black","acrylic, mediums, paper",big,1,?,1
+2270,0,landscape,memory,"red, black, green","acrylic, canvas",small,0,buildings,2
+2349,0.5,landscape,video,"green, blue","acrylic, paper",big,1,road,2
+2350,0.5,landscape,video,"green, blue","acrylic, paper",big,1,countryside,3
+2351,0.5,?,?,"blue, purple, red","acrylic, paper",big,1,?,1
+2351,0.5,portrait,video,red,"acrylic, paper",big,1,dancers,2
+2355,0,?,?,"yellow, black","acrylic, paper",big,1,?,1
+2357,0,?,?,"blue, orange","digital, acrylic, paper",big,1,?,3
+2645,0,?,?,grayscale,"pen, paper, computer, plotter",big,1,squares,3
+3094,0.5,landscape,live painting,"black, blue, yellow, orange, green","charcoal, pencil, paper",big,1,"vegetables, drapery",3
+3096,0.5,still life,live painting,grayscale,"charcoal, paper",big,1,scissors,1
+3131,1,portrait,live painting,grayscale,"pencil, paper",small,1,man,2
+3154,1,portrait,live painting,grayscale,"pencil, paper",big,1,woman,2
+3157,0.5,portrait,live painting,grayscale,"pencil, paper",medium,1,"woman, notes",4
+3157,1,portrait,live painting,grayscale,"pencil, paper",medium,1,woman,4
+3237,1,portrait,live painting,grayscale,"pencil, paper",small,1,man,3
+3271,1,landscape,live painting,"green, blue","acrylic, canvas",small,0,"park, building",4
+3288,0.5,portrait,live painting,"black, purple, red, yellow","chalk, charcoal, paper",big,0,mannequin,3
+3289,0.5,narrative composition,live painting,"black, blue, yellow","chalk, charcoal, paper",big,0,spoons,3
+3293,0.5,landscape,memory,"black, blue, yellow","chalk, charcoal, paper",big,0,buildings,3
+3363,1,portrait,"photos, mirror",grayscale,"pencil, paper",big,1,me,4
+3371,0,?,?,"black, yellow","pen, paper, computer, plotter",small,1,triangles,4
+3394,1,portrait,live painting,grayscale,"pen, paper",big,1,man,2
+3398,0.5,portrait,live painting,grayscale,"pen, paper",medium,0,man,5
+3451,0.5,narrative composition,immagination,"black, yellow","collage, pen, paper",big,1,?,4
+3523,1,landscape,live painting,"black, yellow","chalk, paper",small,1,buildings,3
+3568,0.5,still life,live painting,"blue, yellow, purple","felt pen, paper",big,1,hat,4
+3569,1,portrait,live painting,purple,"felt pen, paper",big,1,man,2
+3572,1,portrait,live painting,"purple, red, green","felt pen, paper",big,1,man,3
+3573,0.5,portrait,live painting,"purple, black, blue","chalk, paper",big,0,man,3
+3574,0.5,portrait,live painting,"orange, black, blue","felt pen, paper",big,1,man,2
+3622,1,portrait,live painting,"yellow, black","chalk, paper",big,1,man,3
+3649,0.5,landscape,live painting,"purple, green, orange, black","acrylic marker, paper",small,1,buildings,2
+3650,0.5,landscape,live painting,"red, green, orange, black","acrylic marker, paper",small,1,buildings,1
+3890,0.5,portrait,photo,"blue, purple, yellow","acrylic, canvas",small,0,man,5
+3891,1,portrait,live painting,"black, red","pencil, pen, paper",small,1,man,3
+3892,0.5,portrait,live painting,"purple, blue, black","acrylic marker, paper",small,1,woman,5
+3893,0.5,portrait,live painting,orange,"chalk, paper",small,1,woman,3
+3894,0.5,portrait,live painting,"black, blue, green","chalk, paper",small,1,man,2
+51110,0,?,code,grayscale,"pen, paper, computer, plotter",small,1,?,2
+51114,1,landscape,photo,"blue, gray","acrylic, canvas",small,0,buildings,2
+51116,0,still life,immagination,"yellow, black",collage,big,0,fire,3
+2029,0.5,landscape,photo,"orange, blue","acrylic, canvas",big,0,buildings,5
